@@ -16,13 +16,25 @@ public class grammBaseListener implements grammListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(@NotNull grammParser.ProgContext ctx) { }
+	@Override public void enterCorrule(@NotNull grammParser.CorruleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProg(@NotNull grammParser.ProgContext ctx) { }
+	@Override public void exitCorrule(@NotNull grammParser.CorruleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBody(@NotNull grammParser.BodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBody(@NotNull grammParser.BodyContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
