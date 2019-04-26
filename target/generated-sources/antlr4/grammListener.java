@@ -8,6 +8,26 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface grammListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link grammParser#mainCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterMainCondition(@NotNull grammParser.MainConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#mainCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitMainCondition(@NotNull grammParser.MainConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#xml}.
+	 * @param ctx the parse tree
+	 */
+	void enterXml(@NotNull grammParser.XmlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#xml}.
+	 * @param ctx the parse tree
+	 */
+	void exitXml(@NotNull grammParser.XmlContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link grammParser#corrule}.
 	 * @param ctx the parse tree
 	 */

@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 public class Main {
 
     public static void main(String[] args)  {
+    	
         try {
             CharStream input = CharStreams.fromStream(System.in);
             grammLexer lexer = new grammLexer(input);
