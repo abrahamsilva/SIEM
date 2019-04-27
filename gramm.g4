@@ -1,19 +1,25 @@
 grammar gramm;
 
 /*if any of subcheck-Validation Failed Authentication SSH login Failed and if within 2 minutes greater than 5 events occur
-having different username and having same source ip XML for Failed Login Attempts from the Same Source:
+having different username and having same source ip XML for Failed Login Attempts from the Same Source
  */
 //Parser rules
 
-corrule: 'if' body (LOGICALOPERATOR 'if' complement)*;
-body: QUANTITATIVE 'of' mainCondition;
-mainCondition: 'subcheck-Validation Failed Authentication SSH login Failed';
+corrule: 'if' body (mainBodyOperator 'if' complement)*;
+body: qualifier 'of' mainCondition;
+mainCondition: mainConditionName statusAux 'Authentication SSH login Failed';
+mainConditionName: 'subcheck-Validation';
+mainBodyOperator: LOGICALOPERATOR;
+status: STATUS;
+qualifier: QUANTITATIVE;
+statusAux: STATUS;
 complement: RELOP number units events;
 number: NUMBER;
 units: UNITSOFTIME;
 name: NAME;
-events: RELOP NUMBER 'events occur' (condition)+ XML 'for' (name)+;
-condition: (LOGICALOPERATOR)* 'having' QUANTITATIVE OBJECT;
+object: OBJECT;
+events: RELOP NUMBER 'events occur' (condition)+ XML 'for' status (name)+;
+condition: (LOGICALOPERATOR)* 'having' QUANTITATIVE object;
 
 
 //Lexer rules
@@ -21,6 +27,7 @@ condition: (LOGICALOPERATOR)* 'having' QUANTITATIVE OBJECT;
 QUANTITATIVE: 'any'|'some'|'one'|'two'|'three'|'all'|'none'|'different'|'same';
 OBJECT: 'username'|'ip'|'password'|'id'|'source ip';
 RELOP: 'less than'|'greater than'|'equals to'|'within';
+STATUS: 'Failed' | 'Accepted' | 'Succeeded';
 UNITSOFTIME: 'seconds'|'minutes'|'hours';
 LOGICALOPERATOR: 'and'|'or';
 XML: 'xml'|'XML';

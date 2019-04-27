@@ -8,45 +8,25 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface grammListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link grammParser#number}.
+	 * Enter a parse tree produced by {@link grammParser#mainConditionName}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumber(@NotNull grammParser.NumberContext ctx);
+	void enterMainConditionName(@NotNull grammParser.MainConditionNameContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link grammParser#number}.
+	 * Exit a parse tree produced by {@link grammParser#mainConditionName}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumber(@NotNull grammParser.NumberContext ctx);
+	void exitMainConditionName(@NotNull grammParser.MainConditionNameContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link grammParser#mainCondition}.
+	 * Enter a parse tree produced by {@link grammParser#statusAux}.
 	 * @param ctx the parse tree
 	 */
-	void enterMainCondition(@NotNull grammParser.MainConditionContext ctx);
+	void enterStatusAux(@NotNull grammParser.StatusAuxContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link grammParser#mainCondition}.
+	 * Exit a parse tree produced by {@link grammParser#statusAux}.
 	 * @param ctx the parse tree
 	 */
-	void exitMainCondition(@NotNull grammParser.MainConditionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link grammParser#condition}.
-	 * @param ctx the parse tree
-	 */
-	void enterCondition(@NotNull grammParser.ConditionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link grammParser#condition}.
-	 * @param ctx the parse tree
-	 */
-	void exitCondition(@NotNull grammParser.ConditionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link grammParser#name}.
-	 * @param ctx the parse tree
-	 */
-	void enterName(@NotNull grammParser.NameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link grammParser#name}.
-	 * @param ctx the parse tree
-	 */
-	void exitName(@NotNull grammParser.NameContext ctx);
+	void exitStatusAux(@NotNull grammParser.StatusAuxContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link grammParser#units}.
 	 * @param ctx the parse tree
@@ -78,6 +58,66 @@ public interface grammListener extends ParseTreeListener {
 	 */
 	void exitBody(@NotNull grammParser.BodyContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link grammParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber(@NotNull grammParser.NumberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber(@NotNull grammParser.NumberContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#mainCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterMainCondition(@NotNull grammParser.MainConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#mainCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitMainCondition(@NotNull grammParser.MainConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition(@NotNull grammParser.ConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition(@NotNull grammParser.ConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#qualifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterQualifier(@NotNull grammParser.QualifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#qualifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitQualifier(@NotNull grammParser.QualifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void enterName(@NotNull grammParser.NameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void exitName(@NotNull grammParser.NameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#mainBodyOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterMainBodyOperator(@NotNull grammParser.MainBodyOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#mainBodyOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitMainBodyOperator(@NotNull grammParser.MainBodyOperatorContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link grammParser#complement}.
 	 * @param ctx the parse tree
 	 */
@@ -97,4 +137,24 @@ public interface grammListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEvents(@NotNull grammParser.EventsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#status}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatus(@NotNull grammParser.StatusContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#status}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatus(@NotNull grammParser.StatusContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#object}.
+	 * @param ctx the parse tree
+	 */
+	void enterObject(@NotNull grammParser.ObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#object}.
+	 * @param ctx the parse tree
+	 */
+	void exitObject(@NotNull grammParser.ObjectContext ctx);
 }
