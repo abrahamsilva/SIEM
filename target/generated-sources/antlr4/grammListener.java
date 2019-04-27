@@ -28,6 +28,26 @@ public interface grammListener extends ParseTreeListener {
 	 */
 	void exitMainCondition(@NotNull grammParser.MainConditionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link grammParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition(@NotNull grammParser.ConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition(@NotNull grammParser.ConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void enterName(@NotNull grammParser.NameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void exitName(@NotNull grammParser.NameContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link grammParser#units}.
 	 * @param ctx the parse tree
 	 */
@@ -67,4 +87,14 @@ public interface grammListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComplement(@NotNull grammParser.ComplementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#events}.
+	 * @param ctx the parse tree
+	 */
+	void enterEvents(@NotNull grammParser.EventsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#events}.
+	 * @param ctx the parse tree
+	 */
+	void exitEvents(@NotNull grammParser.EventsContext ctx);
 }

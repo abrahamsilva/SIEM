@@ -40,6 +40,30 @@ public class grammBaseListener implements grammListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCondition(@NotNull grammParser.ConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondition(@NotNull grammParser.ConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterName(@NotNull grammParser.NameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitName(@NotNull grammParser.NameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterUnits(@NotNull grammParser.UnitsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -83,6 +107,18 @@ public class grammBaseListener implements grammListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitComplement(@NotNull grammParser.ComplementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEvents(@NotNull grammParser.EventsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEvents(@NotNull grammParser.EventsContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
