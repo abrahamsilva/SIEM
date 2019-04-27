@@ -18,12 +18,13 @@ xml: XML;*/
 
 //Lexer rules
 
+
 QUANTITATIVE: 'any'|'some'|'one'|'two'|'three'|'all'|'none'|'different'|'same';
 OBJECT: 'username'|'ip'|'password'|'id'|'source ip';
 RELOP: 'less than'|'greater than'|'equals to'|'within';
 UNITSOFTIME: 'seconds'|'minutes'|'hours';
 LOGICALOPERATOR: 'and'|'or';
-NAME: [a-zA-Z0-9]+;
 NUMBER: [0-9]+;
+NAME: [a-zA-Z0-9]+;
 XML: 'XML';
 WS: [ \t\r\n]+ -> skip;

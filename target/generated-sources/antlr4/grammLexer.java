@@ -17,7 +17,7 @@ public class grammLexer extends Lexer {
 		new PredictionContextCache();
 	public static final int
 		T__2=1, T__1=2, T__0=3, QUANTITATIVE=4, OBJECT=5, RELOP=6, UNITSOFTIME=7, 
-		LOGICALOPERATOR=8, NAME=9, NUMBER=10, XML=11, WS=12;
+		LOGICALOPERATOR=8, NUMBER=9, NAME=10, XML=11, WS=12;
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
 	};
@@ -28,7 +28,7 @@ public class grammLexer extends Lexer {
 	};
 	public static final String[] ruleNames = {
 		"T__2", "T__1", "T__0", "QUANTITATIVE", "OBJECT", "RELOP", "UNITSOFTIME", 
-		"LOGICALOPERATOR", "NAME", "NUMBER", "XML", "WS"
+		"LOGICALOPERATOR", "NUMBER", "NAME", "XML", "WS"
 	};
 
 
@@ -73,7 +73,7 @@ public class grammLexer extends Lexer {
 		"\3\t\3\t\5\t\u00e4\n\t\3\n\6\n\u00e7\n\n\r\n\16\n\u00e8\3\13\6\13\u00ec"+
 		"\n\13\r\13\16\13\u00ed\3\f\3\f\3\f\3\f\3\r\6\r\u00f5\n\r\r\r\16\r\u00f6"+
 		"\3\r\3\r\2\2\16\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31"+
-		"\16\3\2\5\5\2\62;C\\c|\3\2\62;\5\2\13\f\17\17\"\"\u010e\2\3\3\2\2\2\2"+
+		"\16\3\2\5\3\2\62;\5\2\62;C\\c|\5\2\13\f\17\17\"\"\u010e\2\3\3\2\2\2\2"+
 		"\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2"+
 		"\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\3"+
 		"\33\3\2\2\2\5\36\3\2\2\2\7Y\3\2\2\2\t\u0082\3\2\2\2\13\u00a1\3\2\2\2\r"+

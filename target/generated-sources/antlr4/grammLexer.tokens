@@ -1,4 +1,4 @@
-NUMBER=10
+NUMBER=9
 XML=11
 QUANTITATIVE=4
 UNITSOFTIME=7
@@ -9,7 +9,7 @@ T__0=3
 OBJECT=5
 WS=12
 RELOP=6
-NAME=9
+NAME=10
 'if'=3
 'subcheck-Validation Failed Authentication SSH login Failed'=2
 'XML'=11

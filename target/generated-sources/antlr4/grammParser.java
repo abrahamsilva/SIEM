@@ -17,11 +17,11 @@ public class grammParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__2=1, T__1=2, T__0=3, QUANTITATIVE=4, OBJECT=5, RELOP=6, UNITSOFTIME=7, 
-		LOGICALOPERATOR=8, NAME=9, NUMBER=10, XML=11, WS=12;
+		LOGICALOPERATOR=8, NUMBER=9, NAME=10, XML=11, WS=12;
 	public static final String[] tokenNames = {
 		"<INVALID>", "'of'", "'subcheck-Validation Failed Authentication SSH login Failed'", 
 		"'if'", "QUANTITATIVE", "OBJECT", "RELOP", "UNITSOFTIME", "LOGICALOPERATOR", 
-		"NAME", "NUMBER", "'XML'", "WS"
+		"NUMBER", "NAME", "'XML'", "WS"
 	};
 	public static final int
 		RULE_corrule = 0, RULE_body = 1, RULE_mainCondition = 2, RULE_complement = 3, 
@@ -315,8 +315,8 @@ public class grammParser extends Parser {
 		"\n\2\2\21\22\7\5\2\2\22\24\5\b\5\2\23\20\3\2\2\2\24\27\3\2\2\2\25\23\3"+
 		"\2\2\2\25\26\3\2\2\2\26\3\3\2\2\2\27\25\3\2\2\2\30\31\7\6\2\2\31\32\7"+
 		"\3\2\2\32\33\5\6\4\2\33\5\3\2\2\2\34\35\7\4\2\2\35\7\3\2\2\2\36\37\7\b"+
-		"\2\2\37 \5\n\6\2 !\5\f\7\2!\t\3\2\2\2\"#\7\f\2\2#\13\3\2\2\2$%\7\t\2\2"+
-		"%\r\3\2\2\2\3\25";
+		"\2\2\37 \5\n\6\2 !\5\f\7\2!\t\3\2\2\2\"#\7\13\2\2#\13\3\2\2\2$%\7\t\2"+
+		"\2%\r\3\2\2\2\3\25";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
