@@ -8,6 +8,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface grammListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link grammParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber(@NotNull grammParser.NumberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber(@NotNull grammParser.NumberContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link grammParser#mainCondition}.
 	 * @param ctx the parse tree
 	 */
@@ -18,15 +28,15 @@ public interface grammListener extends ParseTreeListener {
 	 */
 	void exitMainCondition(@NotNull grammParser.MainConditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link grammParser#xml}.
+	 * Enter a parse tree produced by {@link grammParser#units}.
 	 * @param ctx the parse tree
 	 */
-	void enterXml(@NotNull grammParser.XmlContext ctx);
+	void enterUnits(@NotNull grammParser.UnitsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link grammParser#xml}.
+	 * Exit a parse tree produced by {@link grammParser#units}.
 	 * @param ctx the parse tree
 	 */
-	void exitXml(@NotNull grammParser.XmlContext ctx);
+	void exitUnits(@NotNull grammParser.UnitsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link grammParser#corrule}.
 	 * @param ctx the parse tree
@@ -47,4 +57,14 @@ public interface grammListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBody(@NotNull grammParser.BodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#complement}.
+	 * @param ctx the parse tree
+	 */
+	void enterComplement(@NotNull grammParser.ComplementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#complement}.
+	 * @param ctx the parse tree
+	 */
+	void exitComplement(@NotNull grammParser.ComplementContext ctx);
 }
