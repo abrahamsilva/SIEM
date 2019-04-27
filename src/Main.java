@@ -15,8 +15,8 @@ public class Main {
             ParseTree tree = parser.corrule();
             System.out.println(tree.toStringTree(parser));
             ParseTreeWalker walker = new ParseTreeWalker();
-            //MiListener listener = new MiListener();
-            //walker.walk(listener, tree);
+            miListener listener = new miListener();
+            walker.walk(listener, tree);
         }
         catch(Exception e) {
             System.out.println("Error");
