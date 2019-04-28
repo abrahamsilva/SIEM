@@ -8,6 +8,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface grammListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link grammParser#propertiesOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterPropertiesOperator(@NotNull grammParser.PropertiesOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#propertiesOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitPropertiesOperator(@NotNull grammParser.PropertiesOperatorContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link grammParser#mainConditionName}.
 	 * @param ctx the parse tree
 	 */
@@ -57,6 +67,26 @@ public interface grammListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBody(@NotNull grammParser.BodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelop(@NotNull grammParser.RelopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#relop}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelop(@NotNull grammParser.RelopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#numberRelop}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumberRelop(@NotNull grammParser.NumberRelopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#numberRelop}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumberRelop(@NotNull grammParser.NumberRelopContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link grammParser#number}.
 	 * @param ctx the parse tree
@@ -127,6 +157,16 @@ public interface grammListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComplement(@NotNull grammParser.ComplementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link grammParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(@NotNull grammParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(@NotNull grammParser.ValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link grammParser#events}.
 	 * @param ctx the parse tree

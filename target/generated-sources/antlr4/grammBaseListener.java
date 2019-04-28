@@ -16,6 +16,18 @@ public class grammBaseListener implements grammListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPropertiesOperator(@NotNull grammParser.PropertiesOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPropertiesOperator(@NotNull grammParser.PropertiesOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMainConditionName(@NotNull grammParser.MainConditionNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -71,6 +83,30 @@ public class grammBaseListener implements grammListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBody(@NotNull grammParser.BodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRelop(@NotNull grammParser.RelopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRelop(@NotNull grammParser.RelopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumberRelop(@NotNull grammParser.NumberRelopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumberRelop(@NotNull grammParser.NumberRelopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -155,6 +191,18 @@ public class grammBaseListener implements grammListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitComplement(@NotNull grammParser.ComplementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValue(@NotNull grammParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValue(@NotNull grammParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

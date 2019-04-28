@@ -1,6 +1,7 @@
 grammar gramm;
 
-/*if any of subcheck-Validation Failed Authentication SSH login Failed and if within 2 minutes greater than 5 events occur
+/*
+if any of subcheck-Validation Failed Authentication SSH login Failed and if within 2 minutes greater than 5 events occur
 having different username and having same source ip XML for Failed Login Attempts from the Same Source
  */
 //Parser rules
@@ -17,9 +18,13 @@ complement: RELOP number units events;
 number: NUMBER;
 units: UNITSOFTIME;
 name: NAME;
+propertiesOperator: LOGICALOPERATOR;
 object: OBJECT;
-events: RELOP NUMBER 'events occur' (condition)+ XML 'for' status (name)+;
-condition: (LOGICALOPERATOR)* 'having' QUANTITATIVE object;
+value: QUANTITATIVE;
+relop: RELOP;
+numberRelop: NUMBER;
+events: relop numberRelop 'events occur' (condition)+ XML 'for' status (name)+;
+condition: (propertiesOperator)* 'having' value object;
 
 
 //Lexer rules
