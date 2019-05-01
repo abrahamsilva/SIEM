@@ -1,7 +1,18 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class miListener extends grammBaseListener {
 
+public class miListener extends grammBaseListener {
+	
+	private File file;
+	
+	public miListener(File file) {
+		this.file = file;
+	}
     //main XML
     public ArrayList<String> XML = new ArrayList<>();
 
@@ -18,7 +29,7 @@ public class miListener extends grammBaseListener {
     //main operator
     String operator1 = "";
 
-    //id of properties, resets every test grop
+    //id of properties, resets every test group
     int propertyID = 1;
 
     //main qualifier
@@ -57,7 +68,15 @@ public class miListener extends grammBaseListener {
 
     @Override
     public void exitCorrule(grammParser.CorruleContext ctx) {
-        fillXML();
+    	
+    	fillXML();	 
+    	try {
+			Files.write(Paths.get(file.getName()), XML, Charset.forName("UTF-8"));
+			file.createNewFile();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}	
         printXML();
     }
 
@@ -143,7 +162,7 @@ public class miListener extends grammBaseListener {
 
     public void printXML(){
         for(int i = 0; i<XML.size(); i++){
-            System.out.println((i+1) + ". " + XML.get(i));
+            System.out.println(XML.get(i));
         }
     }
 
