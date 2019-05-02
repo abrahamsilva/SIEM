@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
+
 public class miListener extends grammBaseListener {
 	
 	private File file;
@@ -13,8 +14,9 @@ public class miListener extends grammBaseListener {
 	public miListener(File file) {
 		this.file = file;
 	}
-    //main XML
+    //main XML & EPL
     public ArrayList<String> XML = new ArrayList<>();
+    public ArrayList<String> EPL = new ArrayList<>();
 
     //main rule
     String ruleGroup = "";
@@ -62,14 +64,16 @@ public class miListener extends grammBaseListener {
 
     //main cycle
     int mainOperatorCount = 0;
-
-
-
+    
+    //relopTime
+    String relopTime = "";
 
     @Override
     public void exitCorrule(grammParser.CorruleContext ctx) {
     	
     	fillXML();	 
+    	fillEPL();
+    	
     	try {
 			Files.write(Paths.get(file.getName()), XML, Charset.forName("UTF-8"));
 			file.createNewFile();
@@ -78,9 +82,10 @@ public class miListener extends grammBaseListener {
 			e.printStackTrace();
 		}	
         printXML();
+        printEPL();
     }
 
-    @Override
+	@Override
     public void enterName(grammParser.NameContext ctx) {
         if (ruleGroup != "")
             ruleGroup += " ";
@@ -154,6 +159,10 @@ public class miListener extends grammBaseListener {
     public void enterUnits(grammParser.UnitsContext ctx) {
         unitAux = ctx.getText();
     }
+    @Override
+    public void enterRelopTime(grammParser.RelopTimeContext ctx) {
+    	relopTime = ctx.getText();
+    }
 
     @Override
     public void exitMainBodyOperator(grammParser.MainBodyOperatorContext ctx) {
@@ -191,7 +200,7 @@ public class miListener extends grammBaseListener {
                 aux = "et";
                 break;
             case "within":
-                aux = "wt";
+                aux = "win";
                 break;
         }
 
@@ -220,6 +229,19 @@ public class miListener extends grammBaseListener {
         XML.add("\t\t</test>");
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         XML.add("\t</rule>");
+    }
+    public void printEPL(){
+        for(int i = 0; i<EPL.size(); i++){
+            System.out.println(EPL.get(i));
+        }
+    }
+    public void fillEPL() {
+    	String auxString =subcheck.replace(" ", "_");
+    	
+		EPL.add("@Name'"+id + " "+ruleGroup+"::" + "Authentication Rule " + id +"'"  );
+		EPL.add("select *from eParser eventStream." + relopTime+":time batch(" +numberAux+ " "+unitAux+")");
+		EPL.add("where (execute_"+ auxString.replace("-", "'")+"_"+status+"')");
+		//group by scr ip having count(∗) >=5 and count(distinct username)>=5; 
     }
 }
 

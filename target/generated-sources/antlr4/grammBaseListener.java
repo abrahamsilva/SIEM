@@ -52,6 +52,18 @@ public class grammBaseListener implements grammListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRelopTime(@NotNull grammParser.RelopTimeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRelopTime(@NotNull grammParser.RelopTimeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterUnits(@NotNull grammParser.UnitsContext ctx) { }
 	/**
 	 * {@inheritDoc}

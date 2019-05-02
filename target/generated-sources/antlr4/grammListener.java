@@ -38,6 +38,16 @@ public interface grammListener extends ParseTreeListener {
 	 */
 	void exitStatusAux(@NotNull grammParser.StatusAuxContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link grammParser#relopTime}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelopTime(@NotNull grammParser.RelopTimeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link grammParser#relopTime}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelopTime(@NotNull grammParser.RelopTimeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link grammParser#units}.
 	 * @param ctx the parse tree
 	 */
