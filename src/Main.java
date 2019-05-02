@@ -9,9 +9,10 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 public class Main {
 
     public static void main(String[] args)  {
-    	
+
         try {
-        	File file = new File("XML.xml");
+            File file = new File("XML.xml");
+            File file2 = new File("EPL.sql");
             CharStream input = CharStreams.fromStream(System.in);
             grammLexer lexer = new grammLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -19,7 +20,7 @@ public class Main {
             ParseTree tree = parser.corrule();
             System.out.println(tree.toStringTree(parser));
             ParseTreeWalker walker = new ParseTreeWalker();
-            miListener listener = new miListener(file);
+            miListener listener = new miListener(file, file2);
             walker.walk(listener, tree);
         }
         catch(Exception e) {

@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 
 public class miListener extends grammBaseListener {
-	
-	private File file;
-	
-	public miListener(File file) {
-		this.file = file;
-	}
+
+    private File XMLfile;
+    private File EPLfile;
+
+    public miListener(File XMLfile, File EPLfile) {
+        this.XMLfile = XMLfile;
+        this.EPLfile = EPLfile;
+    }
     //main XML & EPL
     public ArrayList<String> XML = new ArrayList<>();
     public ArrayList<String> EPL = new ArrayList<>();
@@ -53,7 +55,7 @@ public class miListener extends grammBaseListener {
     //to help save relational operators inside properties
     ArrayList<String> relopArray = new ArrayList<>();
     //linked with relop array
-    ArrayList<String> numbrerRelopArray = new ArrayList<>();
+    ArrayList<String> numberRelopArray = new ArrayList<>();
     //aux var
     boolean relopBool = false;
 
@@ -64,28 +66,31 @@ public class miListener extends grammBaseListener {
 
     //main cycle
     int mainOperatorCount = 0;
-    
+
     //relopTime
     String relopTime = "";
 
     @Override
     public void exitCorrule(grammParser.CorruleContext ctx) {
-    	
-    	fillXML();	 
-    	fillEPL();
-    	
-    	try {
-			Files.write(Paths.get(file.getName()), XML, Charset.forName("UTF-8"));
-			file.createNewFile();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}	
+
+        fillXML();
+        fillEPL();
+
+        try {
+            Files.write(Paths.get(XMLfile.getName()), XML, Charset.forName("UTF-8"));
+            XMLfile.createNewFile();
+
+            Files.write(Paths.get(EPLfile.getName()), EPL, Charset.forName("UTF-8"));
+            EPLfile.createNewFile();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         printXML();
         printEPL();
     }
 
-	@Override
+    @Override
     public void enterName(grammParser.NameContext ctx) {
         if (ruleGroup != "")
             ruleGroup += " ";
@@ -129,7 +134,7 @@ public class miListener extends grammBaseListener {
         objectArray.add(ctx.getText());
         if(!relopBool){
             relopArray.add("");
-            numbrerRelopArray.add("");
+            numberRelopArray.add("");
         }
         relopBool = false;
     }
@@ -141,7 +146,7 @@ public class miListener extends grammBaseListener {
 
     @Override
     public void enterNumberRelop(grammParser.NumberRelopContext ctx) {
-        numbrerRelopArray.add(ctx.getText());
+        numberRelopArray.add(ctx.getText());
         relopBool = true;
     }
 
@@ -161,7 +166,7 @@ public class miListener extends grammBaseListener {
     }
     @Override
     public void enterRelopTime(grammParser.RelopTimeContext ctx) {
-    	relopTime = ctx.getText();
+        relopTime = ctx.getText();
     }
 
     @Override
@@ -204,10 +209,51 @@ public class miListener extends grammBaseListener {
                 break;
         }
 
-        if(numbrerRelopArray.get(i) == "")
+        if(numberRelopArray.get(i) == "")
             return("<property id=\"" + (i+1) + "\" name=\"" + objectArray.get(i) + "\" value=\"" + valueArray.get(i).toUpperCase() + "\"/>");
         else
-            return("<property count=\"&" + aux + ";" + numbrerRelopArray.get(i) + "\" id=\"" + (i+1) + "\" name=\"" + objectArray.get(i) + "\" value=\"" + valueArray.get(i).toUpperCase() + "\"/>");
+            return("<property count=\"&" + aux + ";" + numberRelopArray.get(i) + "\" id=\"" + (i+1) + "\" name=\"" + objectArray.get(i) + "\" value=\"" + valueArray.get(i).toUpperCase() + "\"/>");
+    }
+
+    public String operatorChanger(String operator){
+        String aux = "";
+        switch (operator){
+            case "greater than":
+                aux = ">=";
+                break;
+            case "less than":
+                aux = "<=";
+                break;
+            case "equals to":
+                aux = "=";
+                break;
+            case "greater than or equals to":
+                aux = ">=";
+                break;
+            case "less than or equals to":
+                aux = "<=";
+                break;
+        }
+        return aux;
+    }
+
+    public String win(String win){
+        String aux = "";
+        switch (win){
+            case "less than":
+                aux = "lt";
+                break;
+            case "greater than":
+                aux = "gt";
+                break;
+            case "equals to":
+                aux = "et";
+                break;
+            case "within":
+                aux = "win";
+                break;
+        }
+        return aux;
     }
 
     public void fillXML(){
@@ -236,12 +282,13 @@ public class miListener extends grammBaseListener {
         }
     }
     public void fillEPL() {
-    	String auxString =subcheck.replace(" ", "_");
-    	
-		EPL.add("@Name'"+id + " "+ruleGroup+"::" + "Authentication Rule " + id +"'"  );
-		EPL.add("select *from eParser eventStream." + relopTime+":time batch(" +numberAux+ " "+unitAux+")");
-		EPL.add("where (execute_"+ auxString.replace("-", "'")+"_"+status+"')");
-		//group by scr ip having count(∗) >=5 and count(distinct username)>=5; 
+        String auxString =subcheck.replace(" ", "_");
+
+        EPL.add("@Name'"+id + " "+ruleGroup+"::" + "Authentication Rule " + id +"'"  );
+        EPL.add("select *from eParser eventStream." + win(relopTime) +":time batch(" +numberAux+ " "+unitAux+")");
+        EPL.add("where (execute_"+ auxString.replace("-", "'")+"_"+status+"')");
+        EPL.add("group by " + objectArray.get(objectArray.size() - 1) + " having count(*) " + operatorChanger(relopArray.get(0)) +
+                numberRelopArray.get(0) + " and count(" + valueArray.get(0) + " " + objectArray.get(0) + ")" +
+                operatorChanger(relopArray.get(0)) + numberRelopArray.get(0));
     }
 }
-
